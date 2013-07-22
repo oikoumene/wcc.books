@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="wcc.books"
+        interface="wcc.books.interfaces.IProductSpecific" />
+</layers>
