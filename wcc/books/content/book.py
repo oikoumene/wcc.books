@@ -28,6 +28,37 @@ class IBook(form.Schema, IImageScaleTraversable):
     """
     
     """
-    pass
 
+    subtitle = schema.TextLine(required=False)
 
+    authors = schema.RelationList(
+            title=_(u'Authors'),
+            value_type=RelationChoice(
+                source=ObjPathSourceBinder()
+            ),
+            required=False
+    )
+
+    image = schema.NamedBlobImage(
+        title=_(u'Image'),
+    )
+
+    issue_date = schema.Date()
+
+    price = schema.Float(required=False)
+
+    note = schema.Text(required=False)
+
+    pages = schema.Int(required=False)
+
+    book_subjects = schema.List(
+        title=_(u'Book Subjects'),
+        value_type=schema.TextLine(),
+        required=False
+    )
+
+    series_title = schema.TextLine(required=False)
+
+    edition = schema.TextLine(required=False)
+
+    toc = schema.Text(required=False)
