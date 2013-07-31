@@ -31,7 +31,7 @@ class IBook(form.Schema, IImageScaleTraversable):
 
     subtitle = schema.TextLine(required=False)
 
-    authors = schema.RelationList(
+    authors = RelationList(
             title=_(u'Authors'),
             value_type=RelationChoice(
                 source=ObjPathSourceBinder()
@@ -39,26 +39,29 @@ class IBook(form.Schema, IImageScaleTraversable):
             required=False
     )
 
-    image = schema.NamedBlobImage(
+    image = NamedBlobImage(
         title=_(u'Image'),
     )
 
-    issue_date = schema.Date()
+    issue_date = schema.Date(title=u'Issuing Date')
 
-    price = schema.Float(required=False)
+    price = schema.Float(title=u'Price', required=False)
 
-    note = schema.Text(required=False)
+    note = schema.Text(title=u'Note', required=False)
 
-    pages = schema.Int(required=False)
+    pages = schema.Int(title=u'Pages', required=False)
 
-    book_subjects = schema.List(
-        title=_(u'Book Subjects'),
-        value_type=schema.TextLine(),
-        required=False
-    )
+    book_subjects = schema.TextLine(title=u'Subjects',
+            required=False)
 
-    series_title = schema.TextLine(required=False)
+    series_title = schema.TextLine(
+            title=u'Series Title',
+            required=False)
 
-    edition = schema.TextLine(required=False)
+    edition = schema.TextLine(
+            title=u'Edition',
+            required=False)
 
-    toc = schema.Text(required=False)
+    toc = schema.Text(
+            title=u'TOC',
+            required=False)

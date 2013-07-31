@@ -28,4 +28,11 @@ class IAuthor(form.Schema, IImageScaleTraversable):
     """
     
     """
-    pass
+    
+    name = schema.TextLine(title=u'Name')
+    surname = schema.TextLine(title=u'Surname')
+
+    form.widget(biography="plone.app.z3cform.wysiwyg.WysiwygFieldWidget")
+    biography = schema.Text(title=u'Biography')
+
+
