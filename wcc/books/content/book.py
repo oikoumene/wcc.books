@@ -19,6 +19,7 @@ from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
 
+
 from wcc.books import MessageFactory as _
 
 
@@ -26,42 +27,69 @@ from wcc.books import MessageFactory as _
 
 class IBook(form.Schema, IImageScaleTraversable):
     """
-    
+    Schema for Book contenttype
     """
 
-    subtitle = schema.TextLine(required=False)
+    subtitle = schema.TextLine(
+        title=_(u'Subtitle'),
+        required=False
+        )
 
     authors = RelationList(
-            title=_(u'Authors'),
-            value_type=RelationChoice(
-                source=ObjPathSourceBinder()
-            ),
-            required=False
-    )
+        title=_(u'Authors'),
+        value_type=RelationChoice(source=ObjPathSourceBinder()),
+        required=False
+        )
 
     image = NamedBlobImage(
         title=_(u'Image'),
-    )
+        )
 
-    issue_date = schema.Date(title=u'Issuing Date')
+    summary = schema.Text(
+        title=_(u'Summary'),
+        required=False,
+        )
 
-    price = schema.Float(title=u'Price', required=False)
+    issue_date = schema.Date(
+        title=u'Issuing Date',
+        )
 
-    note = schema.Text(title=u'Note', required=False)
+    price = schema.Float(
+        title=u'Price',
+        required=False
+        )
 
-    pages = schema.Int(title=u'Pages', required=False)
+    note = schema.Text(
+        title=u'Note',
+        required=False
+        )
 
-    book_subjects = schema.TextLine(title=u'Subjects',
-            required=False)
+    pages = schema.Int(
+        title=u'Pages',
+        required=False
+        )
+
+    book_subjects = schema.TextLine(
+        title=u'Subjects',
+        required=False
+        )
 
     series_title = schema.TextLine(
-            title=u'Series Title',
-            required=False)
+        title=u'Series Title',
+        required=False
+        )
+
+    isbn = schema.TextLine(
+        title=_(u'ISBN'),
+        required=False
+        )
 
     edition = schema.TextLine(
-            title=u'Edition',
-            required=False)
+        title=u'Edition',
+        required=False
+        )
 
     toc = schema.Text(
-            title=u'TOC',
-            required=False)
+        title=u'TOC',
+        required=False
+        )
