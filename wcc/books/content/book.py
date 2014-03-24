@@ -71,12 +71,6 @@ class IBook(form.Schema, IImageScaleTraversable):
         required=False
         )
 
-    dexteritytextindexer.searchable('book_categories')
-    book_categories = schema.Text(
-        title=u'Categories',
-        required=False
-        )
-
     dexteritytextindexer.searchable('book_subjects')
     book_subjects = schema.Text(
         title=u'Subjects',

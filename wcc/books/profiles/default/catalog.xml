@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
-     <index name="book_categories" meta_type="KeywordIndex">
-      <indexed_attr value="book_categories"/>
-     </index>
-     <index name="book_subjects" meta_type="KeywordIndex">
+      <index name="book_subjects" meta_type="KeywordIndex">
       <indexed_attr value="book_subjects"/>
      </index>
      <index name="series_title" meta_type="KeywordIndex">

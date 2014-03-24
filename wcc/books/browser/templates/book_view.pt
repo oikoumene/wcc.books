@@ -21,8 +21,6 @@
       <div class="cell position-7 width-1:2">
           <ul class="wcc-book-details">
               <li> <span class="wcc-book-label" >Title</span> : <span tal:content="context/title" /> </li>
-              <li> <span class="wcc-book-label" >Description</span> : </li>
-              <li> <span class="wcc-book-label" >Category</span> : </li>
               <tal:book-label tal:repeat="widget view/widgets/values">
               <tal:except tal:condition="python: widget.__name__ not in ('image',)">
               <li><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="structure widget/render"/></li>
