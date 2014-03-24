@@ -7,6 +7,10 @@
       i18n:domain="wcc.books">
 <body>
 
+<metal:title fill-slot="content-title">
+
+</metal:title>
+
 
 
 <metal:main fill-slot="content-core">
