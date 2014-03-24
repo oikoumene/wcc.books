@@ -1,0 +1,13 @@
+/* styles.css */
+#content ul.wcc-book-details {
+    list-style-type: none;
+}
+
+ul.wcc-book-details .wcc-book-label {
+    font-weight: bold;
+}   
+
+.wcc-book-img {
+    margin-left: 40px;
+}
+

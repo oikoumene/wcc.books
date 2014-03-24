@@ -21,5 +21,8 @@
         directory="static"/>
 
     <!-- -*- extra stuff goes here -*- -->
+    <adapter name='book_subjects' factory=".indexer.book_subjects"/>
+    <adapter name='book_categories' factory=".indexer.book_categories"/>
+    <adapter name='series_title' factory=".indexer.book_series_title"/>
 
 </configure>

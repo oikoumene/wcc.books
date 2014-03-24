@@ -18,6 +18,8 @@ from plone.app.textfield import RichText
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
+from collective import dexteritytextindexer
+
 
 
 from wcc.books import MessageFactory as _
@@ -69,12 +71,20 @@ class IBook(form.Schema, IImageScaleTraversable):
         required=False
         )
 
-    book_subjects = schema.TextLine(
+    dexteritytextindexer.searchable('book_categories')
+    book_categories = schema.Text(
+        title=u'Categories',
+        required=False
+        )
+
+    dexteritytextindexer.searchable('book_subjects')
+    book_subjects = schema.Text(
         title=u'Subjects',
         required=False
         )
 
-    series_title = schema.TextLine(
+    dexteritytextindexer.searchable('series_title')
+    series_title = schema.Text(
         title=u'Series Title',
         required=False
         )
