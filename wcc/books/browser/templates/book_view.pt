@@ -18,7 +18,7 @@
   <div class="row">
       <div class="cell position-0 width-1:2">
           <span class="wcc-book-img">
-        <img tal:replace="structure context/@@images/image/preview"/>
+        <img tal:replace="structure context/@@images/image/preview | nothing"/>
         </span>
 
       </div>
