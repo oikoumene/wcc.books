@@ -1,0 +1,33 @@
+<div class="portlet portletBookstopportlet"
+    i18n:domain="wcc.books">
+
+    
+    <div class="book-top-series">
+    <h3>Categories</h3>
+    <ul>
+    <tal:block repeat="series python: view.get_top('Subject')">
+    <li tal:content="series"> </li>
+    </tal:block>    
+    </ul>
+    </div>
+
+    <div class="book-top-series">
+    <h3>Series</h3>
+    <ul>
+    <tal:block repeat="series python: view.get_top('series_title')">
+    <li tal:content="series"> </li>
+    </tal:block>    
+    </ul>
+    </div>
+
+    <div class="book-top-series">
+    <h3>Subjects</h3>
+    <ul>
+    <tal:block repeat="series python: view.get_top('book_subjects')">
+    <li tal:content="series"> </li>
+    </tal:block>    
+    </ul>
+    </div>
+
+
+</div>

@@ -2,5 +2,9 @@
 <portlets>
 
     <!-- -*- extra stuff goes here -*- -->
+ <portlet 
+   addview="wcc.books.portlet.Bookstopportlet"
+   title="Books top portlet"
+   description=""/>
 
 </portlets>
