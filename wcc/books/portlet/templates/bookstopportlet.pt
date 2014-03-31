@@ -1,30 +1,43 @@
 <div class="portlet portletBookstopportlet"
-    i18n:domain="wcc.books">
+    i18n:domain="wcc.books"
+    tal:define="std modules/Products.PythonScripts.standard;
+                      url_quote nocall: std/url_quote;">
 
     
-    <div class="book-top-series">
+    <div class="books-top-3">
     <h3>Categories</h3>
     <ul>
-    <tal:block repeat="series python: view.get_top('Subject')">
-    <li tal:content="series"> </li>
+    <tal:block repeat="data python: view.get_top('Subject')">
+    <li tal:define="esc_data python:url_quote(data)">
+        <a tal:content="data" tal:attributes="href string:
+            ${context/portal_url}/books#b_start=0&c4=${esc_data}"></a> 
+    </li>
     </tal:block>    
     </ul>
+
     </div>
 
-    <div class="book-top-series">
+    <div class="books-top-3">
     <h3>Series</h3>
     <ul>
-    <tal:block repeat="series python: view.get_top('series_title')">
-    <li tal:content="series"> </li>
+    <tal:block repeat="data python: view.get_top('series_title')">
+    <li tal:define="esc_data python:url_quote(data)">
+        <a tal:content="data" tal:attributes="href string:
+            ${context/portal_url}/books#b_start=0&c4=${esc_data}"></a> 
+    </li>
     </tal:block>    
     </ul>
+
     </div>
 
-    <div class="book-top-series">
+    <div class="books-top-3">
     <h3>Subjects</h3>
     <ul>
-    <tal:block repeat="series python: view.get_top('book_subjects')">
-    <li tal:content="series"> </li>
+    <tal:block repeat="data python: view.get_top('book_subjects')">
+    <li tal:define="esc_data python:url_quote(data)">
+        <a tal:content="data" tal:attributes="href string:
+            ${context/portal_url}/books#b_start=0&c4=${esc_data}"></a> 
+    </li>
     </tal:block>    
     </ul>
     </div>
