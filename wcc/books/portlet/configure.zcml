@@ -11,7 +11,6 @@
         assignment=".bookstopportlet.Assignment"
         renderer=".bookstopportlet.Renderer"
         addview=".bookstopportlet.AddForm"
-        editview=".bookstopportlet.EditForm"
         />
 
 </configure>

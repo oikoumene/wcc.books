@@ -19,19 +19,17 @@ class IBookstopportlet(IPortletDataProvider):
     """
     pass
 
+
 class Assignment(base.Assignment):
     implements(IBookstopportlet)
-
-    def __init__(self, **kwargs):
-        for k, v in kwargs.items():
-            setattr(self, k, v)
 
     @property
     def title(self):
         return _('Books top portlet')
 
+
 class Renderer(base.Renderer):
-    
+
     render = ViewPageTemplateFile('templates/bookstopportlet.pt')
 
     @property
@@ -54,16 +52,10 @@ class Renderer(base.Renderer):
         return sorted(stats, key=stats.get, reverse=True)[:3]
 
 
-class AddForm(base.AddForm):
+class AddForm(base.NullAddForm):
     form_fields = form.Fields(IBookstopportlet)
     label = _(u"Add Books top portlet")
     description = _(u"")
 
-    def create(self, data):
-        return Assignment(**data)
-
-
-class EditForm(base.EditForm):
-    form_fields = form.Fields(IBookstopportlet)
-    label = _(u"Edit Books top portlet")
-    description = _(u"")
+    def create(self):
+        return Assignment()
