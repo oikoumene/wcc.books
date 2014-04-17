@@ -21,7 +21,7 @@ def to2(context):
     intids = getUtility(IIntIds)
 
     for b in portal_catalog(
-            portal_type=['wcc.books.books'],
+            portal_type=['wcc.books.book'],
             Language='all'):
         obj = b.getObject()
         for name, relation in _relations(obj):
