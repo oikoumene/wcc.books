@@ -21,6 +21,7 @@ from plone.multilingualbehavior.directives import languageindependent
 
 from wcc.books import MessageFactory as _
 from wcc.books.backref import back_references
+from operator import itemgetter, attrgetter
 
 
 # Interface class; used to define content-type schema.
@@ -47,4 +48,5 @@ class AuthorDataProvider(grok.Adapter):
 
     @property
     def related_books(self):
-        return back_references(self.context, 'authors')
+        return sorted(back_references(self.context, 'authors'),
+                      key=attrgetter('title'))
