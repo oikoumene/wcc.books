@@ -5,7 +5,7 @@ from zope import schema
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
-from zope.interface import invariant, Invalid
+from zope.interface import invariant, Invalid, Interface
 
 from z3c.form import group, field
 
@@ -20,6 +20,7 @@ from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
 
 from wcc.books import MessageFactory as _
+from wcc.books.backref import back_references
 
 
 # Interface class; used to define content-type schema.
@@ -36,3 +37,14 @@ class IAuthor(form.Schema, IImageScaleTraversable):
     biography = schema.Text(title=u'Biography')
 
 
+class IAuthorDataProvider(Interface):
+    pass
+
+
+class AuthorDataProvider(grok.Adapter):
+    grok.context(IAuthor)
+    grok.implements(IAuthorDataProvider)
+
+    @property
+    def related_books(self):
+        return back_references(self.context, 'authors')
