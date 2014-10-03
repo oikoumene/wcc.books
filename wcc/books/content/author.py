@@ -28,14 +28,12 @@ from operator import itemgetter, attrgetter
 
 class IAuthor(form.Schema, IImageScaleTraversable):
     """
-    
-    """
-    
-    name = schema.TextLine(title=u'Name')
-    surname = schema.TextLine(title=u'Surname')
 
-    form.widget(biography="plone.app.z3cform.wysiwyg.WysiwygFieldWidget")
-    biography = schema.Text(title=u'Biography')
+    """
+
+    title = schema.TextLine(title=u'Name')
+
+    description = schema.Text(title=u'Biography')
 
 
 class IAuthorDataProvider(Interface):

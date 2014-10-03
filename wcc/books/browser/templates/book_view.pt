@@ -24,10 +24,18 @@
       </div>
       <div class="cell position-7 width-1:2">
           <ul class="wcc-book-details">
-              <li> <span class="wcc-book-label" >Title</span> : <span tal:content="context/title" /> </li>
               <tal:book-label tal:repeat="widget view/widgets/values">
-              <tal:except tal:condition="python: widget.__name__ not in ('image',)">
-              <li><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="structure widget/render"/></li>
+
+              <tal:price tal:condition="python: widget.__name__ in ('price')">
+              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="python: '£{:.2f}'.format(context.price) "/></li>
+              </tal:price>
+
+              <tal:issue_date tal:condition="python: widget.__name__ in ('issue_date')">
+              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="python: '{d.day} {d:%B} {d.year}'.format(d=context.issue_date)"/></li>
+              </tal:issue_date>
+
+              <tal:except tal:condition="python: widget.__name__ not in ('image', 'price', 'issue_date')">
+              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="structure widget/render"/></li>
               </tal:except>
               </tal:book-label>
           </ul>

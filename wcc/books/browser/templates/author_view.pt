@@ -7,19 +7,17 @@
       i18n:domain="wcc.books">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-    
-    Note that we're using Plone 4 macros. Replace them with Plone 3 macros
-    if needed.
-</tal:comment>
+<metal:title fill-slot="content-title">
+
+</metal:title>
+
+
 
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
     <tal:block repeat="widget view/widgets/values">
-        <div class="field" tal:condition="python:widget.__name__ not in ('IDublinCore.title', 'IDublinCore.description', 'title', 'description',)">
+        <div>
             <label tal:content="widget/label" />
             <br />
             <div tal:content="structure widget/render" />

@@ -21,7 +21,6 @@ from plone.multilingualbehavior.directives import languageindependent
 from collective import dexteritytextindexer
 
 
-
 from wcc.books import MessageFactory as _
 
 
@@ -32,9 +31,18 @@ class IBook(form.Schema, IImageScaleTraversable):
     Schema for Book contenttype
     """
 
+    dexteritytextindexer.searchable('title')
+    title = schema.Text(
+        title=_(u'Title'),
+        )
+
     subtitle = schema.TextLine(
         title=_(u'Subtitle'),
         required=False
+        )
+
+    description = schema.Text(
+        title=_(u'Summary'),
         )
 
     authors = RelationList(
@@ -45,11 +53,7 @@ class IBook(form.Schema, IImageScaleTraversable):
 
     image = NamedBlobImage(
         title=_(u'Image'),
-        )
-
-    summary = schema.Text(
-        title=_(u'Summary'),
-        required=False,
+        required=False
         )
 
     issue_date = schema.Date(
@@ -61,19 +65,8 @@ class IBook(form.Schema, IImageScaleTraversable):
         required=False
         )
 
-    note = schema.Text(
-        title=u'Note',
-        required=False
-        )
-
     pages = schema.Int(
         title=u'Pages',
-        required=False
-        )
-
-    dexteritytextindexer.searchable('book_subjects')
-    book_subjects = schema.Text(
-        title=u'Subjects',
         required=False
         )
 
@@ -83,9 +76,16 @@ class IBook(form.Schema, IImageScaleTraversable):
         required=False
         )
 
-    isbn = schema.TextLine(
-        title=_(u'ISBN'),
-        required=False
+    dexteritytextindexer.searchable('isbn10')
+    isbn10 = schema.TextLine(
+        title=_(u'ISBN10'),
+        max_length=10,
+        )
+
+    dexteritytextindexer.searchable('isbn13')
+    isbn13 = schema.TextLine(
+        title=_(u'ISBN13'),
+        max_length=13,
         )
 
     edition = schema.TextLine(
