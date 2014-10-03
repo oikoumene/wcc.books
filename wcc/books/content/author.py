@@ -23,14 +23,17 @@ from wcc.books import MessageFactory as _
 from wcc.books.backref import back_references
 from operator import itemgetter, attrgetter
 
+from collective import dexteritytextindexer
 
 # Interface class; used to define content-type schema.
+
 
 class IAuthor(form.Schema, IImageScaleTraversable):
     """
 
     """
 
+    dexteritytextindexer.searchable('title')
     title = schema.TextLine(title=u'Name')
 
     description = schema.Text(title=u'Biography')
