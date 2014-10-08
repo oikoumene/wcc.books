@@ -27,7 +27,7 @@
               <tal:book-label tal:repeat="widget view/widgets/values">
 
               <tal:price tal:condition="python: widget.__name__ in ('price')">
-              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="python: '£{:.2f}'.format(context.price) "/></li>
+              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="python: '£{0:.2f}'.format(context.price) "/></li>
               </tal:price>
 
               <tal:issue_date tal:condition="python: widget.__name__ in ('issue_date')">
