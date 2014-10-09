@@ -30,17 +30,5 @@
 
     </div>
 
-    <div class="books-top-3">
-    <h3>Subjects</h3>
-    <ul>
-    <tal:block repeat="data python: view.get_top('book_subjects')">
-    <li tal:define="esc_data python:url_quote(data)">
-        <a tal:content="data" tal:attributes="href string:
-            ${context/portal_url}/books#b_start=0&c4=${esc_data}"></a> 
-    </li>
-    </tal:block>    
-    </ul>
-    </div>
-
 
 </div>
