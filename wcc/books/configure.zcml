@@ -8,7 +8,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="wcc.books">
-
+    
     <includeDependencies package="." />
     <grok:grok package="." />
     <i18n:registerTranslations directory="locales" />
@@ -23,5 +23,16 @@
     <!-- -*- extra stuff goes here -*- -->
     <adapter name='book_subjects' factory=".indexer.book_subjects"/>
     <adapter name='series_title' factory=".indexer.book_series_title"/>
+
+    <browser:menuItems
+        for="Products.CMFCore.interfaces.IContentish"
+        menu="plone_displayviews">
+        <browser:menuItem
+            title="Author Listing"
+            action="authorlisting"
+            />
+    </browser:menuItems>
+
+
 
 </configure>
