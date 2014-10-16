@@ -25,16 +25,13 @@
     </tal:block>
     <div class='related-books' tal:define='provider view/provider'>
         <label>Related Books</label>
-        <tal:block repeat="book provider/related_books">
         <ul>
+        <tal:block repeat="book provider/related_books">
             <li>
                 <a tal:attributes="href book/absolute_url" tal:content='book/title'></a>
             </li>
-
-        </ul>
-
-
         </tal:block>
+        </ul>
     </div>
 
 
