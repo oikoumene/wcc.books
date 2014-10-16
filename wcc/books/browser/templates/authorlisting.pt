@@ -48,7 +48,7 @@
     <tal:listing condition="batch">
 
         <div metal:define-slot="entries">
-            <article tal:repeat="item batch" metal:define-macro="entries">
+            <article class="wcc-books-item" tal:repeat="item batch" metal:define-macro="entries">
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                    item_id item/getId|item/id;
                                    item_title_or_id item/pretty_title_or_id;
@@ -70,7 +70,7 @@
                 <header metal:define-macro="listitem"
                     tal:attributes="class python: item_type == 'Event' and 'vevent' or ''">
 
-                    <span class="summary">
+                    <span class="wcc-books-title">
                         <img tal:replace="structure item_icon/html_tag" />
                         <a href="#"
                            tal:attributes="href python: item_type in use_view_action and item_url+'/view' or item_url;
@@ -123,11 +123,11 @@
 
                 </header>
 
-                <span class="description"
+                <div class="wcc-books-description"
                     tal:condition="item_description"
                     tal:content="item_description">
                     description
-                </span>
+                </div>
 
                 <span class="related-books">
                 <tal:block define="listingview nocall:context/authorlisting">

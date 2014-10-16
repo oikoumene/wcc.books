@@ -48,7 +48,7 @@
     <tal:listing condition="batch">
 
         <div metal:define-slot="entries">
-            <article tal:repeat="item batch" metal:define-macro="entries">
+            <article class="wcc-books-item" tal:repeat="item batch" metal:define-macro="entries">
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                    item_id item/getId|item/id;
                                    item_title_or_id item/pretty_title_or_id;
@@ -127,11 +127,11 @@
 
                 </header>
 
-                <span class="description"
+                <div class="wcc-books-description"
                     tal:condition="item_description"
-                    tal:content="item_description">
+                    tal:content="python: ' '.join(item_description.split()[:50]) + '...'">
                     description
-                </span>
+                </div>
 
 
             </metal:block>
@@ -143,7 +143,7 @@
         
         <tal:block define="listingview nocall:context/bookslisting">
         <div>
-            <a>csv</a>
+            <a tal:attributes="href string: ${context/absolute_url}/bookcsv" class="wcc-books-csv-button">Get CSV</a>
         </div>
         </tal:block>
 

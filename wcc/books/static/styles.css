@@ -11,3 +11,34 @@ ul.wcc-book-details .wcc-book-label {
     margin-left: 40px;
 }
 
+.wcc-books-item {
+    border-bottom: 1px solid #DDD;
+    margin: 20px;
+    padding: 10px;
+}
+.wcc-books-description {
+    margin-top: 15px;
+    
+}
+.wcc-books-title {
+
+    font-size: 17px;
+
+}
+body {
+    font-family: 'Roboto', verdana,helvetica,tahoma,arial,san-serif;
+}
+
+#form-widgets-authors a {
+
+    margin-left: 30px;
+
+}
+
+.wcc-books-csv-button {
+
+    background: #800000;
+    padding: 10px;
+    float:right;
+    color: #FFF;
+}
