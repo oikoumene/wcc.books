@@ -35,10 +35,13 @@ body {
 
 }
 
-.wcc-books-csv-button {
 
+.wcc-books-button {
+
+    margin: 5px;
     background: #800000;
     padding: 10px;
-    float:right;
     color: #FFF;
+    float:right;
+
 }

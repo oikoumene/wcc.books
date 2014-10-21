@@ -9,7 +9,7 @@ from base64 import b64encode
 grok.templatedir('templates')
 
 
-class BookCsv(grok.View):
+class BookJSON(grok.View):
     grok.context(IContentish)
     grok.name('bookjson')
     grok.require('zope2.View')
@@ -40,8 +40,11 @@ class BookCsv(grok.View):
             for field in fields:
                 if field is 'authors':
                     values = getattr(obj, field, None)
-                    listvalue = [v.to_object.Title() for v in values]
-                    value = ', '.join(listvalue)
+                    if values:
+                        listvalue = [v.to_object.Title() for v in values]
+                        value = ', '.join(listvalue)
+                    else:
+                        value = None
                 elif field is 'image':
                     image = getattr(obj, field, None)
                     if image:

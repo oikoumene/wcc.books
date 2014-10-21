@@ -41,9 +41,12 @@ class BookCsv(grok.View):
             data = list()
             for i in fields:
                 if i is 'authors':
-                    values = getattr(b.getObject(), i)
-                    listvalue = [n.to_object.Title() for n in values]
-                    value = ', '.join(listvalue)
+                    values = getattr(b.getObject(), i, None)
+                    if values:
+                        listvalue = [n.to_object.Title() for n in values]
+                        value = ', '.join(listvalue)
+                    else:
+                        value = None
                 else:
                     value = getattr(b.getObject(), i)
                     if value is None:
