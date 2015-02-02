@@ -11,8 +11,6 @@
 
 </metal:title>
 
-
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
   <div class="row">
@@ -27,7 +25,9 @@
               <tal:book-label tal:repeat="widget view/widgets/values">
 
               <tal:price tal:condition="python: widget.__name__ in ('price')">
-              <li tal:condition="widget/value"><span class="wcc-book-label" tal:content="widget/label"/> : <span tal:content="python: '£{0:.2f}'.format(context.price) "/></li>
+              <li tal:condition="widget/value"><span
+                  class="wcc-book-label" tal:content="widget/label"/> :
+                      <span tal:content="context/price"/></li>
               </tal:price>
 
               <tal:issue_date tal:condition="python: widget.__name__ in ('issue_date')">

@@ -32,7 +32,7 @@ class IBook(form.Schema, IImageScaleTraversable):
     """
 
     dexteritytextindexer.searchable('title')
-    title = schema.Text(
+    title = schema.TextLine(
         title=_(u'Title'),
         )
 
@@ -42,9 +42,13 @@ class IBook(form.Schema, IImageScaleTraversable):
         )
 
     description = schema.Text(
-        title=_(u'Summary'),
+        title=_(u'Description'),
         )
 
+    summary = RichText(
+        title=_(u'Summary'),
+        )
+    
     authors = RelationList(
         title=_(u'Authors'),
         value_type=RelationChoice(source=ObjPathSourceBinder()),
@@ -60,7 +64,7 @@ class IBook(form.Schema, IImageScaleTraversable):
         title=u'Issuing Date',
         )
 
-    price = schema.Float(
+    price = schema.TextLine(
         title=u'Price',
         required=False
         )
