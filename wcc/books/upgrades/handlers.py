@@ -30,3 +30,22 @@ def to2(context):
             except KeyError:
                 continue
         updateRelations(obj, None)
+
+@gs.upgradestep(title=u'Upgrade wcc.books to 3',
+                description=u'Upgrade wcc.books to 3',
+                source='*', destination='3',
+                sortkey=1, profile='wcc.books:default')
+def to3(context):
+    setup = getToolByName(context, 'portal_setup')
+    setup.runAllImportStepsFromProfile('profile-wcc.books.upgrades:to3')
+
+    portal_catalog = getToolByName(context, 'portal_catalog')
+
+    for b in portal_catalog(
+            portal_type=['wcc.books.book'],
+            Language='all'):
+        obj = b.getObject()
+        try:
+            obj.price = str(obj.price)
+        except KeyError:
+            continue

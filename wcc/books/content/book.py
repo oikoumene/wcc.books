@@ -66,6 +66,7 @@ class IBook(form.Schema, IImageScaleTraversable):
 
     price = schema.TextLine(
         title=u'Price',
+        description=u'Add price including currency eg. USD 45 EUR 30',
         required=False
         )
 
